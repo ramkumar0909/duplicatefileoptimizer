@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="605.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rk.df.ui.controller.DuplicateFinderController">
+    <HBox spacing="10.0">
+        <HBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+        </HBox.margin>
+        <TextField fx:id="pathTextField" alignment="CENTER_RIGHT" disable="true" prefHeight="27.0" prefWidth="641.0" promptText="Choose directory">
+            <HBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </HBox.margin>
+        </TextField>
+        <Button defaultButton="true" layoutX="716.0" mnemonicParsing="false" onAction="#selectDirectory" prefHeight="27.0" prefWidth="160.0" text="Choose folder" fx:id="chooseBtn">
+            <HBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button layoutX="885.0" layoutY="1.0" mnemonicParsing="false" onAction="#scanDirectory" prefHeight="27.0" prefWidth="109.0" text="Scan" fx:id="scanBtn">
+            <HBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button onAction="#reset" text="Reset">
+            <HBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
+    <!--    <Pane layoutX="17.0" layoutY="14.0" prefHeight="36.0" prefWidth="1008.0">-->
+    <!--        <TextField fx:id="pathTextField" alignment="CENTER_RIGHT" disable="true" prefHeight="27.0" prefWidth="702.0" promptText="Choose directory" />-->
+    <!--        <Button defaultButton="true" layoutX="716.0" mnemonicParsing="false" onAction="#selectDirectory" prefHeight="27.0" prefWidth="160.0" text="Choose folder" />-->
+    <!--        <Button layoutX="885.0" layoutY="1.0" mnemonicParsing="false" onAction="#scanDirectory" prefHeight="27.0" prefWidth="109.0" text="Scan" />-->
+    <!--    </Pane>-->
+    <Pane layoutY="50.0" prefHeight="264.0" prefWidth="1025.0">
+        <PieChart fx:id="piechart" layoutX="605.0" prefHeight="264.0" prefWidth="397.0" />
+        <Label layoutX="14.0" layoutY="15.0" text="Total files" />
+        <Label fx:id="totalFiles" layoutX="150.0" layoutY="15.0" />
+        <Label layoutX="14.0" layoutY="30.0" text="Total duplicate files" />
+        <Label fx:id="totalDuplicateFiles" layoutX="150.0" layoutY="30.0" />
+        <ProgressBar layoutX="19.0" layoutY="230.0" prefHeight="20.0" prefWidth="274.0" progress="0.0"  fx:id="progressBar"/>
+    </Pane>
+    <TableView fx:id="duplicateFileTableView" layoutX="9.0" layoutY="327.0" prefHeight="273.0" prefWidth="1002.0">
+        <columns>
+            <TableColumn prefWidth="203.0" text="File">
+                <cellValueFactory>
+                    <PropertyValueFactory property="file" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="651.0" text="Locations">
+                <cellValueFactory>
+                    <PropertyValueFactory property="location" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="0.0" prefWidth="72.0" text="Archive">
+                <cellValueFactory>
+                    <PropertyValueFactory property="archive" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="70.0" text="Delete">
+                <cellValueFactory>
+                    <PropertyValueFactory property="delete" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+</AnchorPane>

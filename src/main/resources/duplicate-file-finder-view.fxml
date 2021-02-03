@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rk.df.ui.controller.DuplicateFileFinderController">
+    <right>
+        <VBox prefHeight="771.0" prefWidth="311.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <PieChart fx:id="piechart" labelLineLength="10.0" maxHeight="300.0" maxWidth="310.0" minHeight="300.0"
+                      minWidth="300.0" prefHeight="300.0" prefWidth="310.0"
+                      style="-fx-border-style: solid; -fx-border-color: #c8c8c8; -fx-border-width: 1;"
+                      title="Metrics "/>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="300.0"
+                  style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: #c8c8c8;">
+                <children>
+                    <Label prefHeight="20.0" prefWidth="150.0" text="Total files scanned"/>
+                    <Label fx:id="totalFiles" prefHeight="20.0" prefWidth="150.0"/>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="300.0"
+                  style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: #c8c8c8;">
+                <children>
+                    <Label prefHeight="20.0" prefWidth="150.0" text="Total duplicate files found"/>
+                    <Label fx:id="totalDuplicateFiles" prefHeight="20.0" prefWidth="150.0"/>
+                </children>
+            </HBox>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </right>
+    <bottom>
+    </bottom>
+    <top>
+        <VBox prefWidth="1200.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <MenuBar>
+                <Menu mnemonicParsing="false" text="File">
+                    <MenuItem mnemonicParsing="false" text="Close"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <MenuItem mnemonicParsing="false" text="Delete"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="About">
+                    <MenuItem mnemonicParsing="false" text="About"/>
+                </Menu>
+            </MenuBar>
+        </VBox>
+    </top>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </BorderPane.margin>
+            <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="949.0" spacing="10.0"
+                  style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: #c8c8c8;">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <TextField fx:id="pathTextField" disable="true" prefHeight="27.0" prefWidth="316.0"
+                           promptText="Choose folder">
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="chooseBtn" mnemonicParsing="false" onAction="#selectDirectory" text="Choose folder"/>
+                <Button fx:id="scanBtn" mnemonicParsing="false" onAction="#scanDirectory" text="Scan"/>
+                <Button mnemonicParsing="false" onAction="#reset" text="Reset"/>
+            </HBox>
+            <TabPane prefHeight="623.0" prefWidth="1000.0"
+                     style="-fx-border-style: solid; -fx-border-width: 1; -fx-border-color: #c8c8c8;"
+                     tabClosingPolicy="UNAVAILABLE">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <Tab text="All Files">
+                    <VBox spacing="30.0">
+                        <Label text="All files scanned including documents, images, videos and songs">
+                            <VBox.margin>
+                                <Insets top="30.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TableView fx:id="duplicateFileTableView" prefHeight="561.0" prefWidth="1000.0">
+                            <columns>
+                                <TableColumn prefWidth="203.0" text="File">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="file"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="651.0" text="Locations">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="location"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                            <VBox.margin>
+                                <Insets bottom="10.0" right="10.0"/>
+                            </VBox.margin>
+                        </TableView>
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </VBox>
+                </Tab>
+                <Tab text="Documents">
+                    <VBox spacing="30.0">
+                        <Label text="Files scanned here includes pdf, doc, docx, ppt, pptx, xls, etc.,">
+                            <VBox.margin>
+                                <Insets top="30.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TableView fx:id="duplicateDocFileTableView" prefHeight="561.0" prefWidth="1000.0">
+                            <columns>
+                                <TableColumn prefWidth="203.0" text="File">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="file"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="651.0" text="Locations">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="location"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                            <VBox.margin>
+                                <Insets bottom="10.0" right="10.0"/>
+                            </VBox.margin>
+                        </TableView>
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </VBox>
+                </Tab>
+                <Tab text="Images">
+                    <VBox spacing="30.0">
+                        <Label text="Images includes png, jpg, jpeg, gif, svg, etc.,">
+                            <VBox.margin>
+                                <Insets top="30.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TableView fx:id="duplicateImageFileTableView" prefHeight="561.0" prefWidth="1000.0">
+                            <columns>
+                                <TableColumn prefWidth="203.0" text="File">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="file"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="651.0" text="Locations">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="location"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                            <VBox.margin>
+                                <Insets bottom="10.0" right="10.0"/>
+                            </VBox.margin>
+                        </TableView>
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </VBox>
+                </Tab>
+                <Tab text="Media(Videos/Songs)">
+                    <VBox spacing="30.0">
+                        <Label text="Media files include mp3, mp4, mpeg, wmv, etc.,">
+                            <VBox.margin>
+                                <Insets top="30.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TableView fx:id="duplicateMediaFileTableView" prefHeight="561.0" prefWidth="1000.0">
+                            <columns>
+                                <TableColumn prefWidth="203.0" text="File">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="file"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="651.0" text="Locations">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="location"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                            <VBox.margin>
+                                <Insets bottom="10.0" right="10.0"/>
+                            </VBox.margin>
+                        </TableView>
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </VBox>
+                </Tab>
+            </TabPane>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <buttons>
+                    <CheckBox fx:id="isDryRunEnabled" mnemonicParsing="false" selected="true" text="Dry run"/>
+                    <Button mnemonicParsing="false" onAction="#archiveFiles" text="archive"/>
+                    <Button mnemonicParsing="false" onAction="#moveFiles" text="move"/>
+                    <Button mnemonicParsing="false" onAction="#deleteFiles" text="delete"/>
+                </buttons>
+            </ButtonBar>
+        </VBox>
+    </center>
+</BorderPane>

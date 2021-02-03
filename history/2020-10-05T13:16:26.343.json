@@ -1,0 +1,12 @@
+{
+  "fileOperation": "ARCHIVE",
+  "time": "2020-10-05T13:16:28.089",
+  "filesModified": [
+    "testlocation1",
+    "testlocation2"
+  ],
+  "filesFailed": [
+    "testFailed1",
+    "testFailed2"
+  ]
+}

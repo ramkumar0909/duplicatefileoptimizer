@@ -1,2 +1,5 @@
 
 .DS_Store
+/.idea/
+duplicate-finder.iml
+/target/

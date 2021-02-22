@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.rk.df.ui.controller.AllFilesTabController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="All files scanned including documents, images, videos and songs">
+    </Label>
+    <TableView prefHeight="561.0" prefWidth="1000.0" fx:id="duplicateAllFileTableView">
+        <columns>
+            <TableColumn prefWidth="203.0" text="File">
+                <cellValueFactory>
+                    <PropertyValueFactory property="file"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="651.0" text="Locations">
+                <cellValueFactory>
+                    <PropertyValueFactory property="location"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn minWidth="0.0" prefWidth="72.0" text="Archive">
+                <cellValueFactory>
+                    <PropertyValueFactory property="archive"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="70.0" text="Delete">
+                <cellValueFactory>
+                    <PropertyValueFactory property="delete"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <padding>
+        <Insets left="10.0"/>
+    </padding>
+</VBox>

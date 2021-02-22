@@ -1,0 +1,27 @@
+{
+  "fileOperation": "ARCHIVE",
+  "time": {
+    "year": 2020,
+    "month": "OCTOBER",
+    "dayOfMonth": 5,
+    "dayOfWeek": "MONDAY",
+    "dayOfYear": 279,
+    "monthValue": 10,
+    "nano": 275000000,
+    "hour": 13,
+    "minute": 14,
+    "second": 31,
+    "chronology": {
+      "calendarType": "iso8601",
+      "id": "ISO"
+    }
+  },
+  "filesModified": [
+    "testlocation1",
+    "testlocation2"
+  ],
+  "filesFailed": [
+    "testFailed1",
+    "testFailed2"
+  ]
+}

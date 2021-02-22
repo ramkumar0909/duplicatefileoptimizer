@@ -1,5 +1,4 @@
-# duplicatefileoptimizer
-THE DUPLICATE FILE FINDER AND OPTIMIZER.
+# DOptimizer - THE DUPLICATE FILE FINDER AND OPTIMIZER.
 
 DOptimizer
 An easy way to find duplicate files and better way to optimize it.
